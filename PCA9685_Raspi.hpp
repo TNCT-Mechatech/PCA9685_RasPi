@@ -20,9 +20,10 @@ private:
   float freq;
 
 public:
-  PCA9685_RasPi(float freq_) : freq(freq_) {
+  // id: 0から順のデバイスid(0~63), freq: pwmidで定めたデバイスの周波数
+  PCA9685_RasPi(int id, float freq_) : freq(freq_) {
 
-    handle = i2cOpen(1, PCA9685_ADDR, 0);
+    handle = i2cOpen(1, PCA9685_ADDR + id, 0);
     if (handle < 0) {
       printf("I2Cオープン失敗\n");
       // 例外を投げて呼び出し元で処理できるようにする

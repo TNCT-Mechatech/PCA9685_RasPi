@@ -8,8 +8,7 @@ int main()
     return 1;
     }
 
-    PCA9685_RasPi pin(2000);
-
+    PCA9685_RasPi pin(0, 2000);// device id, frequency
 
     pin.setPwm(0, 0.5);
     pin.setPwm(1, 0.5);
