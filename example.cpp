@@ -33,7 +33,7 @@ int main()
     pin.setDigital(6, false);
     pin.setDigital(7, false);
 
-    i2cClose(pin.getHandle());
+    i2cClose(pin.handle());
     gpioTerminate();
     return 0;
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstdint>
 #include <cstdio>
 #include <iostream>
@@ -18,7 +20,8 @@ private:
   float freq;
 
 public:
-  PCA9685_RasPi(float freq_) : freq(freq_){
+  PCA9685_RasPi(float freq_) : freq(freq_) {
+
     handle = i2cOpen(1, PCA9685_ADDR, 0);
     if (handle < 0) {
       printf("I2Cオープン失敗\n");
@@ -78,7 +81,7 @@ public:
     write8(LED0_ON_H + 4 * channel, 0x00);
     write8(LED0_OFF_L + 4 * channel, off & 0xFF);
     write8(LED0_OFF_H + 4 * channel, off >> 8);
-}
+  }
 
-  int getHandle() { return handle; }
+  int handle() { return handle; }
 };
