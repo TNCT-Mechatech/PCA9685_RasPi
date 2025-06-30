@@ -16,15 +16,15 @@
 
 class PCA9685_RasPi {
 private:
-  int handle;
+  int handle_;
   float freq;
 
 public:
   // id: 0から順のデバイスid(0~63), freq: pwmidで定めたデバイスの周波数
   PCA9685_RasPi(int id, float freq_) : freq(freq_) {
 
-    handle = i2cOpen(1, PCA9685_ADDR + id, 0);
-    if (handle < 0) {
+    handle_ = i2cOpen(1, PCA9685_ADDR + id, 0);
+    if (handle_ < 0) {
       printf("I2Cオープン失敗\n");
       // 例外を投げて呼び出し元で処理できるようにする
       throw std::runtime_error("I2Cオープン失敗");
@@ -35,11 +35,11 @@ public:
   }
   // 8bitレジスタ書き込み
   void write8(uint8_t reg, uint8_t data) {
-    i2cWriteByteData(handle, reg, data);
+    i2cWriteByteData(handle_, reg, data);
   }
 
   // 8bitレジスタ読み込み
-  uint8_t read8(uint8_t reg) { return i2cReadByteData(handle, reg); }
+  uint8_t read8(uint8_t reg) { return i2cReadByteData(handle_, reg); }
 
   // 周波数設定
   void pca9685_set_pwm_freq(float freq_ = -1) {
@@ -84,5 +84,5 @@ public:
     write8(LED0_OFF_H + 4 * channel, off >> 8);
   }
 
-  int handle() { return handle; }
+  int handle() { return handle_; }
 };

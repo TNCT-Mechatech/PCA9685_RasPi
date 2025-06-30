@@ -8,7 +8,7 @@ int main()
     return 1;
     }
 
-    PCA9685_RasPi pin(0, 2000);// device id, frequency
+    PCA9685_RasPi pin(0, 2000);  // device id, frequency
 
     pin.setPwm(0, 0.5);
     pin.setPwm(1, 0.5);
@@ -20,7 +20,7 @@ int main()
     pin.setDigital(6, false);
     pin.setDigital(7, true);
 
-    usleep(5 * 1000 * 1000); // 5s待つ
+    usleep(5 * 1000 * 1000);  // 5s待つ
 
     pin.setPwm(0, 0.0);
     pin.setPwm(1, 0.0);
