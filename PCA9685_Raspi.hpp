@@ -20,7 +20,7 @@ private:
   float freq;
 
 public:
-  // id: 0から順のデバイスid(0~63), freq: pwmidで定めたデバイスの周波数
+  // id: 0から順のデバイスid(0~63), freq: pwmidで定めたデバイスの周波数(MAX: 1526)
   PCA9685_RasPi(int id, float freq_) : freq(freq_) {
 
     handle_ = i2cOpen(1, PCA9685_ADDR + id, 0);

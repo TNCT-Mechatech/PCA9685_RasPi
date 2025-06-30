@@ -9,6 +9,7 @@ int main()
     }
 
     PCA9685_RasPi pin(0, 2000);  // device id, frequency
+    // -> freqの最大の1526に丸められる
 
     pin.setPwm(0, 0.5);
     pin.setPwm(1, 0.5);
